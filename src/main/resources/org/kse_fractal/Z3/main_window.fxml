@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Separator?>
+
+<HBox fx:id="root" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.kse_fractal.Z3.KSE3Controller">
+
+    <VBox fx:id="container" xmlns:fx="http://javafx.com/fxml" spacing="20.0" minWidth="250" prefWidth="250">
+        <HBox styleClass="logo_container" alignment="CENTER_LEFT" spacing="5" >
+            <VBox HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+                <Label styleClass="bold">Задание 3</Label>
+                <Label>Кинематика</Label>
+            </VBox>
+            <Button onAction="#ImportValuesFromFile">↓</Button>
+            <Button onAction="#ExportValuesToFile">↑</Button>
+        </HBox>
+
+        <VBox VBox.vgrow="ALWAYS">
+
+            <VBox styleClass="user_input_items" spacing="20">
+                <VBox spacing="10">
+                    <VBox spacing="5">
+                        <Label>Масса груза (кг)</Label>
+                        <TextField fx:id="field_mass" />
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <TextFlow>
+                            <Text>Ускорение&#160;</Text>
+                            <Text text="(м/с)"/>
+                            <Text text="2" style="-fx-font-size: 10px;" translateY="-4"/>
+                        </TextFlow>
+                        <TextField fx:id="field_acceleration" />
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <TextFlow>
+                            <Text>Момент времени&#160;</Text>
+                            <Text text="(с)"/>
+                        </TextFlow>
+                        <TextField fx:id="field_time" />
+                    </VBox>
+                </VBox>
+
+                <VBox spacing="5">
+
+                    <Label>Радиусы (мм)</Label>
+                    <Separator prefWidth="400" />
+                    <HBox spacing="10">
+                        <VBox spacing="5">
+                            <TextFlow>
+                                <Text text="R"/>
+                                <Text text="2" style="-fx-font-size: 10px;" translateY="4"/>
+                            </TextFlow>
+                            <TextField fx:id="field_R2" />
+                        </VBox>
+                        <VBox spacing="5">
+                            <TextFlow>
+                                <Text text="r"/>
+                                <Text text="2" style="-fx-font-size: 10px;" translateY="4"/>
+                            </TextFlow>
+                            <TextField fx:id="field_r2" />
+                        </VBox>
+                    </HBox>
+
+                    <HBox spacing="10">
+                        <VBox spacing="5">
+                            <TextFlow>
+                                <Text text="R"/>
+                                <Text text="3" style="-fx-font-size: 10px;" translateY="4"/>
+                            </TextFlow>
+                            <TextField fx:id="field_R3" />
+                        </VBox>
+                        <VBox spacing="5">
+                            <TextFlow>
+                                <Text text="r"/>
+                                <Text text="3" style="-fx-font-size: 10px;" translateY="4"/>
+                            </TextFlow>
+                            <TextField fx:id="field_r3" />
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="5">
+
+                    <TextFlow>
+                        <Text>Угловые скорости блоков&#160;</Text>
+                        <Text text="(с"/>
+                        <Text text="-1" style="-fx-font-size: 10px;" translateY="-4"/>
+                        <Text text=")"/>
+                    </TextFlow>
+                    <Separator prefWidth="400" />
+
+                    <HBox spacing="10">
+                        <VBox spacing="5">
+                            <TextFlow>
+                                <Text text="ω"/>
+                                <Text text="2" style="-fx-font-size: 10px;" translateY="4"/>
+                            </TextFlow>
+                            <TextField fx:id="field_omega2" />
+                        </VBox>
+                        <VBox spacing="5">
+                            <TextFlow>
+                                <Text text="ω"/>
+                                <Text text="3" style="-fx-font-size: 10px;" translateY="4"/>
+                            </TextFlow>
+                            <TextField fx:id="field_omega3" />
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="5">
+                    <Button styleClass="lesgo" prefWidth="Infinity" onAction="#RunCalculation">Рассчитать</Button>
+                    <Button prefWidth="Infinity" onAction="#setDefaults">Установить стандартные значения</Button>
+                </VBox>
+
+            </VBox>
+        </VBox>
+
+        <VBox HBox.hgrow="ALWAYS" styleClass="logo_container" alignment="CENTER_LEFT">
+            <Label styleClass="">2026 © Команда «Фрактал» КСЕ</Label>
+        </VBox>
+
+    </VBox>
+
+    <VBox styleClass="exercise_text" alignment="TOP_CENTER" spacing="30.0">
+        <Label styleClass="bold">Текст задачи:</Label>
+        <TextFlow>
+            <Text>Механизм, описание структуры которого представлено в задаче части №&#160;2 задания №&#160;2 является идеальным (рис.&#160;3.3). Определить силу, которую необходимо приложить к грузу&#160;1 для прекращения движения в момент времени&#160;t, а также силу, которая сформируется при продолжении движения груза&#160;1 в момент времени t в точке М большого цилиндра блока&#160;3 механизма. Радиусы цилиндров блоков 2 и 3, а также необходимые кинематические параметры взять из решения задачи задания №&#160;2.</Text>
+        </TextFlow>
+        <ImageView fx:id="imageView" fitWidth="500" preserveRatio="true" opacity="0.8"/>
+    </VBox>
+</HBox>

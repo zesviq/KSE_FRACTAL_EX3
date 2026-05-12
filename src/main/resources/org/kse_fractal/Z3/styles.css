@@ -1,0 +1,74 @@
+#root {
+    -fx-background-color: #fff;
+        background-color: #fff;
+}
+
+.logo_container {
+
+}
+
+.logo {
+    -fx-background-color: #aaa;
+    -fx-pref-width: 40;
+    -fx-min-width: 40;
+    -fx-max-width: 40;
+
+    -fx-pref-height: 40;
+    -fx-min-height: 40;
+    -fx-max-height: 40;
+}
+
+.logo.h1 {
+    -fx-opacity: 0.2;
+}
+
+#container {
+    -fx-background-color: #F7F9FD;
+        background-color: #F7F9FD;
+    -fx-padding: 20;
+
+    -fx-border-color: transparent #ddd transparent #000; /* top right bottom left */
+    -fx-border-style: none solid none none;
+    -fx-border-width: 0 1 0 0;
+    -fx-border-insets: 0;
+}
+
+#password {
+    -fx-background-color: #ff0000;
+    background-color: #ff0000;
+}
+
+.exercise_text {
+    -fx-padding: 30;
+}
+
+.exercise_text .label, .exercise_text .text_flow {
+    -fx-text-align: center;
+    -fx-user-select: all;
+    -fx-font-size: 15;
+}
+
+.bold {
+    -fx-font-weight: 900;
+}
+
+.lesgo {
+    -fx-background-color: #6587D3;
+    -fx-font-color: #fff;
+}
+
+.results_window {
+    -fx-background-color: #F7F9FD;
+        background-color: #F7F9FD;
+    -fx-padding: 10;
+}
+
+#results_container {
+    -fx-background-color: #ffF9FD;
+        background-color: #ffF9FD;
+}
+
+#results_container .item {
+    -fx-background-color: #ffFfFf;
+             background-color: #ffFfFf;
+}

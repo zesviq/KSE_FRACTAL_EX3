@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.kse_fractal.Z3.ResultsWindowController"
+      prefHeight="400.0" prefWidth="600.0" styleClass="results_window">
+
+    <HBox fx:id="root_box" spacing="10" alignment="TOP_CENTER">
+        <HBox alignment="CENTER_LEFT">
+            <Label>Готово</Label>
+        </HBox>
+        <HBox HBox.hgrow="ALWAYS"/>
+        <HBox spacing="8">
+            <Button onAction="#exportTXT">Экспорт в .txt</Button>
+            <Button text="Визуализация" disable="true" />
+        </HBox>
+    </HBox>
+
+
+    <VBox prefWidth="Infinity" spacing="20">
+        <VBox spacing="5">
+            <Label>Дано:</Label>
+            <ListView fx:id="starts_container" />
+        </VBox>
+        <VBox spacing="5">
+            <Label>Результат:</Label>
+            <ListView fx:id="results_container" />
+        </VBox>
+    </VBox>
+</VBox>
