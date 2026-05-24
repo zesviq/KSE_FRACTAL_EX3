@@ -1,92 +1,65 @@
 package org.kse_fractal.Z3;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
+import org.kse_fractal.Z3.Variables.Data;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
 
 public class ResultsWindowController {
 
-    @FXML ListView results_container;
-    @FXML ListView starts_container;
+    @FXML ListView container;
 
-    private Data data;
+    JsonObject full_json;
+    JsonObject simple_json;
+    String for_export_json;
 
-    public void sendResults(Data data) {
-        this.data = data;
-        Gson gson = new Gson();
-        this.data.exportData = new ExportData(data);
-        exportAllResults();
-        renderDataTable();
+    public void sendResults(JsonObject full_json, JsonObject simple_json, String for_export_json) {
+        this.full_json = full_json;
+        this.simple_json = simple_json;
+        this.for_export_json = for_export_json;
+
+        renderDataTableContainer();
     }
 
-    public String rndr(String key, String value, String valyuta) {
-        return key + ": " + value + " " + valyuta;
-    }
-    
-    public void renderDataTable() {
+    @FXML private CheckBox allBox;
 
-        starts_container.getItems().setAll(
-                rndr("Масса груза", String.valueOf(data.mass), "(кг)"),
-                rndr("Ускорение", String.valueOf(data.acceleration), "(м/с)^2"),
-                rndr("Момент времени", String.valueOf(data.time), "(с)"),
-                rndr("Радиус R2", String.valueOf(data.R2), "(мм)"),
-                rndr("Радиус r2", String.valueOf(data.r2), "(мм)"),
-                rndr("Радиус R3", String.valueOf(data.R3), "(мм)"),
-                rndr("Радиус r3", String.valueOf(data.R3), "(мм)"),
-                rndr("Угловая скорость блоков ω2", String.valueOf(data.omega2), "(с)^-1"),
-                rndr("Угловая скорость блоков ω3", String.valueOf(data.omega3), "(с)^-1")
-
-        );
-
-        results_container.getItems().setAll(
-                rndr("Сила тяжести груза", String.valueOf(data.exportData.G1), "(Н)"),
-                rndr("Сила инерции", String.valueOf(data.exportData.F_in), "(Н)"),
-                rndr("Внешняя сила, необх. для прекращения движения", String.valueOf(data.exportData.R1), "(Н)"),
-                rndr("Момент 2", String.valueOf(data.exportData.M2), "(Н · м)"),
-                rndr("Момент 3", String.valueOf(data.exportData.M3), "(Н · м)"),
-                rndr("Силы в точке M большого цилиндра блока 3", String.valueOf(data.exportData.FM), "(Н)")
-        );
+    @FXML private boolean isFull() {
+        return allBox.isSelected();
     }
 
-    public void exportAllResults() {
-        Gson gson = new Gson();
-        System.out.println(gson.toJson(this.data));
+    public void renderDataTableContainer() {
+        container.getItems().clear();
+
+        JsonObject t;
+        if(isFull()) t = this.full_json; else t = this.simple_json;
+
+        for (Map.Entry<String, JsonElement> entry : t.entrySet()) {
+            try {
+                String key = entry.getKey();
+                double value = entry.getValue().getAsDouble();
+                container.getItems().add(key + ": " + value);
+            } catch (RuntimeException e) {}
+        }
     }
 
-    public String exportTextData() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("Дано:\n");
-
-        starts_container.getItems().stream().sorted().forEach(
-                item -> sb.append("\n" + item.toString())
-        );
-
-        sb.append("\n\nИтог:\n");
-
-        results_container.getItems().stream().sorted().forEach(
-            item -> sb.append("\n" + item.toString())
-        );
-
-        return sb.toString();
-    }
 
     @FXML private HBox root_box;
 
-    public void exportTXT() {
+    public void exportJson() {
         try {
-            String expData = this.exportTextData();
+            String expData = this.for_export_json;
 
             FileChooser fileChooser = new FileChooser();
 
             FileChooser.ExtensionFilter extFilter =
-                    new FileChooser.ExtensionFilter("TXT", "*.txt");
+                    new FileChooser.ExtensionFilter("JSON", "*.json");
             fileChooser.getExtensionFilters().add(extFilter);
 
             File file = fileChooser.showSaveDialog(root_box.getScene().getWindow());
@@ -103,3 +76,4 @@ public class ResultsWindowController {
     }
 
 }
+

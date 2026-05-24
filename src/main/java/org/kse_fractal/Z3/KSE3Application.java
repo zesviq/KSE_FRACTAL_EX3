@@ -15,7 +15,7 @@ public class KSE3Application extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(KSE3Application.class.getResource("main_window.fxml"));
         scene = new Scene(fxmlLoader.load(), 900, 610);
         scene.getStylesheets().add(String.valueOf(KSE3Application.class.getResource("styles.css")));
-        stage.setTitle("КСЕ: Задание 3: «Динамика»");
+        stage.setTitle("КСЕ: Задание 2+3: Кинематика и динамика");
 
         stage.setScene(scene);
         stage.show();

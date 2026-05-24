@@ -7,26 +7,18 @@
       fx:controller="org.kse_fractal.Z3.ResultsWindowController"
       prefHeight="400.0" prefWidth="600.0" styleClass="results_window">
 
-    <HBox fx:id="root_box" spacing="10" alignment="TOP_CENTER">
-        <HBox alignment="CENTER_LEFT">
-            <Label>Готово</Label>
-        </HBox>
+    <HBox fx:id="root_box" spacing="5" alignment="TOP_CENTER">
+        <VBox alignment="CENTER_LEFT">
+            <CheckBox fx:id="allBox" onAction="#renderDataTableContainer" text="Показать всё" />
+        </VBox>
         <HBox HBox.hgrow="ALWAYS"/>
         <HBox spacing="8">
-            <Button onAction="#exportTXT">Экспорт в .txt</Button>
+            <Button onAction="#exportJson">Экспорт в .json</Button>
             <Button text="Визуализация" disable="true" />
         </HBox>
     </HBox>
 
-
     <VBox prefWidth="Infinity" spacing="20">
-        <VBox spacing="5">
-            <Label>Дано:</Label>
-            <ListView fx:id="starts_container" />
-        </VBox>
-        <VBox spacing="5">
-            <Label>Результат:</Label>
-            <ListView fx:id="results_container" />
-        </VBox>
+        <ListView fx:id="container" />
     </VBox>
 </VBox>

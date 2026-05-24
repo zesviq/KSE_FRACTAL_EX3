@@ -12,116 +12,95 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.Separator?>
 
+<?import javafx.scene.control.CheckBox?>
 <HBox fx:id="root" xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.kse_fractal.Z3.KSE3Controller">
 
     <VBox fx:id="container" xmlns:fx="http://javafx.com/fxml" spacing="20.0" minWidth="250" prefWidth="250">
         <HBox styleClass="logo_container" alignment="CENTER_LEFT" spacing="5" >
             <VBox HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
-                <Label styleClass="bold">Задание 3</Label>
-                <Label>Кинематика</Label>
+                <Label fx:id="exNum" styleClass="bold" />
+                <Label fx:id="exDesc" />
             </VBox>
-            <Button onAction="#ImportValuesFromFile">↓</Button>
-            <Button onAction="#ExportValuesToFile">↑</Button>
         </HBox>
 
         <VBox VBox.vgrow="ALWAYS">
 
             <VBox styleClass="user_input_items" spacing="20">
                 <VBox spacing="10">
+
+                    <VBox spacing="5">
+                        <CheckBox fx:id="toggleEx3Checkbox" onAction="#renderEx" text="Включить задание №3" />
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <Label>Момент времени t (сек)</Label>
+                        <TextField fx:id="field_time"  />
+                    </VBox>
+
                     <VBox spacing="5">
                         <Label>Масса груза (кг)</Label>
                         <TextField fx:id="field_mass" />
                     </VBox>
 
+                </VBox>
+
+                <Label style="-fx-opacity: 0.7;">Изначальные значения:</Label>
+
+                <VBox spacing="10">
                     <VBox spacing="5">
-                        <TextFlow>
-                            <Text>Ускорение&#160;</Text>
-                            <Text text="(м/с)"/>
+
+                        <Label>Радиусы (мм)</Label>
+                        <Separator prefWidth="400" />
+                        <HBox spacing="5">
+                            <VBox spacing="5">
+                                <TextFlow>
+                                    <Text text="R"/>
+                                    <Text text="2" style="-fx-font-size: 10px;" translateY="4"/>
+                                </TextFlow>
+                                <TextField disable="true" fx:id="field_R2" />
+                            </VBox>
+                            <VBox spacing="5">
+                                <TextFlow>
+                                    <Text text="r"/>
+                                    <Text text="2" style="-fx-font-size: 10px;" translateY="4"/>
+                                </TextFlow>
+                                <TextField disable="true" fx:id="field_r2" />
+                            </VBox>
+
+                            <VBox spacing="5">
+                                <TextFlow>
+                                    <Text text="R"/>
+                                    <Text text="3" style="-fx-font-size: 10px;" translateY="4"/>
+                                </TextFlow>
+                                <TextField disable="true" fx:id="field_R3" />
+                            </VBox>
+                            <VBox spacing="5">
+                                <TextFlow>
+                                    <Text text="r"/>
+                                    <Text text="3" style="-fx-font-size: 10px;" translateY="4"/>
+                                </TextFlow>
+                                <TextField disable="true" fx:id="field_r3" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <Label>Уравнение движения груза 1, мм</Label>
+                        <TextFlow style="-fx-opacity: 0.3;">
+                            <Text text="y"/>
+                            <Text text="1" style="-fx-font-size: 10px;" translateY="4"/>
+                            <Text text=" = "/>
+                            <Text text="35 + 94t"/>
                             <Text text="2" style="-fx-font-size: 10px;" translateY="-4"/>
                         </TextFlow>
-                        <TextField fx:id="field_acceleration" />
-                    </VBox>
-
-                    <VBox spacing="5">
-                        <TextFlow>
-                            <Text>Момент времени&#160;</Text>
-                            <Text text="(с)"/>
-                        </TextFlow>
-                        <TextField fx:id="field_time" />
                     </VBox>
                 </VBox>
 
-                <VBox spacing="5">
-
-                    <Label>Радиусы (мм)</Label>
-                    <Separator prefWidth="400" />
-                    <HBox spacing="10">
-                        <VBox spacing="5">
-                            <TextFlow>
-                                <Text text="R"/>
-                                <Text text="2" style="-fx-font-size: 10px;" translateY="4"/>
-                            </TextFlow>
-                            <TextField fx:id="field_R2" />
-                        </VBox>
-                        <VBox spacing="5">
-                            <TextFlow>
-                                <Text text="r"/>
-                                <Text text="2" style="-fx-font-size: 10px;" translateY="4"/>
-                            </TextFlow>
-                            <TextField fx:id="field_r2" />
-                        </VBox>
-                    </HBox>
-
-                    <HBox spacing="10">
-                        <VBox spacing="5">
-                            <TextFlow>
-                                <Text text="R"/>
-                                <Text text="3" style="-fx-font-size: 10px;" translateY="4"/>
-                            </TextFlow>
-                            <TextField fx:id="field_R3" />
-                        </VBox>
-                        <VBox spacing="5">
-                            <TextFlow>
-                                <Text text="r"/>
-                                <Text text="3" style="-fx-font-size: 10px;" translateY="4"/>
-                            </TextFlow>
-                            <TextField fx:id="field_r3" />
-                        </VBox>
-                    </HBox>
-                </VBox>
-
-                <VBox spacing="5">
-
-                    <TextFlow>
-                        <Text>Угловые скорости блоков&#160;</Text>
-                        <Text text="(с"/>
-                        <Text text="-1" style="-fx-font-size: 10px;" translateY="-4"/>
-                        <Text text=")"/>
-                    </TextFlow>
-                    <Separator prefWidth="400" />
-
-                    <HBox spacing="10">
-                        <VBox spacing="5">
-                            <TextFlow>
-                                <Text text="ω"/>
-                                <Text text="2" style="-fx-font-size: 10px;" translateY="4"/>
-                            </TextFlow>
-                            <TextField fx:id="field_omega2" />
-                        </VBox>
-                        <VBox spacing="5">
-                            <TextFlow>
-                                <Text text="ω"/>
-                                <Text text="3" style="-fx-font-size: 10px;" translateY="4"/>
-                            </TextFlow>
-                            <TextField fx:id="field_omega3" />
-                        </VBox>
-                    </HBox>
-                </VBox>
+                <Separator prefWidth="400" />
 
                 <VBox spacing="5">
                     <Button styleClass="lesgo" prefWidth="Infinity" onAction="#RunCalculation">Рассчитать</Button>
-                    <Button prefWidth="Infinity" onAction="#setDefaults">Установить стандартные значения</Button>
                 </VBox>
 
             </VBox>
@@ -134,9 +113,10 @@
     </VBox>
 
     <VBox styleClass="exercise_text" alignment="TOP_CENTER" spacing="30.0">
-        <Label styleClass="bold">Текст задачи:</Label>
+        <Label styleClass="bold" fx:id="exTextLabel">Текст задачи:</Label>
         <TextFlow>
-            <Text>Механизм, описание структуры которого представлено в задаче части №&#160;2 задания №&#160;2 является идеальным (рис.&#160;3.3). Определить силу, которую необходимо приложить к грузу&#160;1 для прекращения движения в момент времени&#160;t, а также силу, которая сформируется при продолжении движения груза&#160;1 в момент времени t в точке М большого цилиндра блока&#160;3 механизма. Радиусы цилиндров блоков 2 и 3, а также необходимые кинематические параметры взять из решения задачи задания №&#160;2.</Text>
+            <Text fx:id="exTextEx2">Механизм&#160;(рис.&#160;2.1) состоит из двух блоков 2 и&#160;3, каждый из которых образован совокупностью жестко связанных большого и малого цилиндров. Малый цилиндр&#160;2 взаимодействует (без&#160;скольжения) с малым цилиндром&#160;3 в точке&#160;B. Большой цилиндр&#160;2 НЕ взаимодействует с большим цилиндром&#160;3. К большому цилиндру&#160;2 в точке&#160;A на «нерастяжимом тросе» подвешен груз&#160;1, который совершает «прямолинейное движение» по заданному уравнению. Определить «путь», пройденный грузом&#160;1, а так&#160;же «скорость», «нормальное», «тангенциальное» и «полное ускорение» точки&#160;M большого цилиндра блока&#160;3 механизма в момент времени&#160;t.</Text>
+            <Text fx:id="exTextEx3">Механизм, описание структуры которого представлено в задаче части №&#160;2 задания №&#160;2 является идеальным (рис.&#160;3.3). Определить силу, которую необходимо приложить к грузу&#160;1 для прекращения движения в момент времени&#160;t, а также силу, которая сформируется при продолжении движения груза&#160;1 в момент времени t в точке М большого цилиндра блока&#160;3 механизма. Радиусы цилиндров блоков 2 и 3, а также необходимые кинематические параметры взять из решения задачи задания №&#160;2.</Text>
         </TextFlow>
         <ImageView fx:id="imageView" fitWidth="500" preserveRatio="true" opacity="0.8"/>
     </VBox>
