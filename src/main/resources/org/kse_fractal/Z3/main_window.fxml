@@ -85,7 +85,7 @@
                         </HBox>
                     </VBox>
 
-                    <VBox spacing="5">
+                    <VBox spacing="5" fx:id="gruz200">
                         <Label>Уравнение движения груза 1, мм</Label>
                         <TextFlow style="-fx-opacity: 0.3;">
                             <Text text="y"/>

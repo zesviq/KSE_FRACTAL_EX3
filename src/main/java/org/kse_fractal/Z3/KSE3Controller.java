@@ -58,6 +58,7 @@ public class KSE3Controller {
     @FXML private boolean isEx3 () {
         return toggleEx3Checkbox.isSelected();
     }
+    @FXML private VBox gruz200;
 
     @FXML public void renderEx () {
         if(!isEx3()) {
@@ -73,6 +74,9 @@ public class KSE3Controller {
             exTextEx3.setVisible(false);
             exTextEx3.setManaged(false);
 
+            gruz200.setVisible(true);
+            gruz200.setManaged(true);
+
 
         } else {
             System.out.println("Render ex 3");
@@ -86,6 +90,9 @@ public class KSE3Controller {
             exTextEx2.setManaged(false);
             exTextEx3.setVisible(true);
             exTextEx3.setManaged(true);
+
+            gruz200.setVisible(false);
+            gruz200.setManaged(false);
         }
     }
 
@@ -144,7 +151,7 @@ public class KSE3Controller {
         }
     }
 
-    @FXML public void createDataValidationError() {
+    @FXML public static void createDataValidationError() {
         Stage dialog = new Stage();;
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setTitle("Диалог");

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Separator?>
+
+<?import javafx.scene.control.CheckBox?>
+<HBox fx:id="root" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.kse_fractal.Z4.AppKSE4Controller">
+
+    <VBox fx:id="container" xmlns:fx="http://javafx.com/fxml" spacing="20.0" minWidth="250" prefWidth="250">
+        <HBox styleClass="logo_container" alignment="CENTER_LEFT" spacing="5" >
+            <VBox HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+                <Label styleClass="bold" text="Задание 4" />
+                <Label text="Электричество" />
+            </VBox>
+        </HBox>
+
+        <VBox VBox.vgrow="ALWAYS">
+
+            <VBox styleClass="user_input_items" spacing="20">
+
+                <VBox spacing="5">
+                    <Label>Электродвижущая сила ε (В)</Label>
+                    <TextField fx:id="field_epsilon"  />
+                </VBox>
+
+                <VBox spacing="10">
+                    <VBox spacing="5">
+
+                        <Label>Начальные значения</Label>
+                        <Separator prefWidth="400" />
+                        <HBox spacing="5">
+                            <VBox spacing="5">
+                                <TextFlow>
+                                    <Text text="R"/>
+                                    <Text text="2" style="-fx-font-size: 10px;" translateY="4"/>
+                                    <Text text=" (Ом)"/>
+                                </TextFlow>
+                                <TextField disable="true" fx:id="field_R2" />
+                            </VBox>
+
+                            <VBox spacing="5">
+                                <TextFlow>
+                                    <Text text="R"/>
+                                    <Text text="3" style="-fx-font-size: 10px;" translateY="4"/>
+                                    <Text text=" (Ом)"/>
+                                </TextFlow>
+                                <TextField disable="true" fx:id="field_R3" />
+                            </VBox>
+
+                            <VBox spacing="5">
+                                <TextFlow>
+                                    <Text text="R"/>
+                                    <Text text="4" style="-fx-font-size: 10px;" translateY="4"/>
+                                    <Text text=" (Ом)"/>
+                                </TextFlow>
+                                <TextField disable="true" fx:id="field_R4" />
+                            </VBox>
+
+
+                            <VBox spacing="5">
+                                <TextFlow>
+                                    <Text text="ε"/>
+                                    <Text text="3" style="-fx-font-size: 10px;" translateY="4"/>
+                                    <Text text=" (В)"/>
+                                </TextFlow>
+                                <TextField disable="true" fx:id="field_epsilon_3" />
+                            </VBox>
+
+                        </HBox>
+                    </VBox>
+                </VBox>
+
+                <Separator prefWidth="400" />
+
+                <Button styleClass="lesgo" prefWidth="Infinity" onAction="#RunCalculation">Рассчитать</Button>
+
+            </VBox>
+        </VBox>
+
+        <VBox HBox.hgrow="ALWAYS" styleClass="logo_container" alignment="CENTER_LEFT">
+            <Label>2026 © Команда «Фрактал» КСЕ</Label>
+        </VBox>
+
+    </VBox>
+
+    <VBox styleClass="exercise_text" alignment="TOP_CENTER" spacing="30.0">
+        <Label styleClass="bold">Текст задачи:</Label>
+        <TextFlow>
+            <Text>Разветвленная электрическая схема (рис.&#160;4.1) содержит четыре сопротивления:&#160;</Text>
+
+            <Text text="R"/><Text text="1" style="-fx-font-size: 10px;" translateY="4"/>
+            <Text text=", R"/><Text text="2" style="-fx-font-size: 10px;" translateY="4"/>
+            <Text text=", R"/><Text text="3" style="-fx-font-size: 10px;" translateY="4"/>
+            <Text text=", R"/><Text text="4" style="-fx-font-size: 10px;" translateY="4"/>
+
+            <Text>; два источника электрической энергии с электродвижущими силами:&#160;</Text>
+
+            <Text text="&#160;ε"/>
+            <Text text=",&#160;ε"/><Text text="3" style="-fx-font-size: 10px;" translateY="4"/>
+
+            <Text>&#160; и гальванометр G. Направления электрических токов ветвей указаны стрелочками. Cчитая, что электрический ток в ветви с гальванометром&#160;G отсутствует, т.е.&#160;I</Text>
+            <Text text="G" style="-fx-font-size: 10px;" translateY="4"/>
+            <Text>&#160;=&#160;0, определить сопротивление, электрические токи в каждой ветви разветвленной электрической схемы и напряжения в ветвях без источников электрической энергии.&#160;</Text>
+        </TextFlow>
+        <ImageView fx:id="imageView" fitWidth="500" preserveRatio="true" opacity="0.8"/>
+    </VBox>
+</HBox>

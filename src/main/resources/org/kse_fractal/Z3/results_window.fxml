@@ -9,7 +9,7 @@
 
     <HBox fx:id="root_box" spacing="5" alignment="TOP_CENTER">
         <VBox alignment="CENTER_LEFT">
-            <CheckBox fx:id="allBox" onAction="#renderDataTableContainer" text="Показать всё" />
+            <CheckBox fx:id="allBox" onAction="#renderDataTableContainer" text="Показать пеерменные, используемые при счёте (дебаг)" />
         </VBox>
         <HBox HBox.hgrow="ALWAYS"/>
         <HBox spacing="8">
