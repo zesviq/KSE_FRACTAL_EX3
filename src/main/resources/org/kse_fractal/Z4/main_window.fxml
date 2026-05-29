@@ -34,14 +34,14 @@
                 </VBox>
 
                 <VBox spacing="10">
-                    <VBox spacing="5">
+                    <VBox spacing="10">
 
                         <Label>Начальные значения</Label>
                         <Separator prefWidth="400" />
-                        <HBox spacing="5">
+                        <VBox spacing="15">
                             <VBox spacing="5">
                                 <TextFlow>
-                                    <Text text="R"/>
+                                    <Text text="Сопротивление R"/>
                                     <Text text="2" style="-fx-font-size: 10px;" translateY="4"/>
                                     <Text text=" (Ом)"/>
                                 </TextFlow>
@@ -50,7 +50,7 @@
 
                             <VBox spacing="5">
                                 <TextFlow>
-                                    <Text text="R"/>
+                                    <Text text="Сопротивление R"/>
                                     <Text text="3" style="-fx-font-size: 10px;" translateY="4"/>
                                     <Text text=" (Ом)"/>
                                 </TextFlow>
@@ -59,7 +59,7 @@
 
                             <VBox spacing="5">
                                 <TextFlow>
-                                    <Text text="R"/>
+                                    <Text text="Сопротивление R"/>
                                     <Text text="4" style="-fx-font-size: 10px;" translateY="4"/>
                                     <Text text=" (Ом)"/>
                                 </TextFlow>
@@ -69,14 +69,14 @@
 
                             <VBox spacing="5">
                                 <TextFlow>
-                                    <Text text="ε"/>
+                                    <Text text="Электродвижущая сила ε"/>
                                     <Text text="3" style="-fx-font-size: 10px;" translateY="4"/>
                                     <Text text=" (В)"/>
                                 </TextFlow>
                                 <TextField disable="true" fx:id="field_epsilon_3" />
                             </VBox>
 
-                        </HBox>
+                        </VBox>
                     </VBox>
                 </VBox>
 

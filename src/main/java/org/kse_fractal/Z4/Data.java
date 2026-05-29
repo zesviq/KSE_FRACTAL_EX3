@@ -1,7 +1,12 @@
 package org.kse_fractal.Z4;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 public class Data {
     // Константы
@@ -39,14 +44,6 @@ public class Data {
         @SerializedName("Сила тока I (А)")
         public double I;
 
-        @SerializedName("Электродвижущая сила, epsilon (Ом)")
-        public double epsilon;
-
-        public double V_a;
-        public double V_b;
-
-        public double V_d = 0; // п. 4.5.
-
         @Expose
         @SerializedName("Напряжение в ветви AB (В)")
         public double U_ab;
@@ -61,30 +58,54 @@ public class Data {
         @SerializedName("Сопротивление R1 (Ом)")
         public double R1;
 
+        // Проверки
+
+        @SerializedName("Проверка формул R1")
+        public boolean R1_test;
+
+        @SerializedName("Проверка формул I4")
+        public boolean I4_test;
+
+        @SerializedName("Проверка валидности данных")
+        public boolean MainTest;
+
+        @Expose
+        @SerializedName("Проверки")
+        public boolean AllTests;
     }
 
-    public double round(double t) { return (double) Math.round(t * 1000) / 1000; }
+    public double round(double t) {
+        BigDecimal f = BigDecimal.valueOf(t);
+        BigDecimal rounded = f.setScale(2, RoundingMode.HALF_UP); // 2.35
+        return (double) rounded.doubleValue();
+    }
 
     public Results calculate_27(double epsilon) {
         Results R = new Results();
 
-        R.epsilon = epsilon;
+        R.I3 = round((epsilon_3 + epsilon) / (R3 + R4));
+        R.I4 = round(R.I3);
 
-        R.V_a = round( - ( R4 * (epsilon + epsilon_3) / (R3 + R4) ) );
-        R.V_b = R.V_d - epsilon;
+        R.I2 = round(R.I4 * R4 / R2);
+        R.I1 = R.I2;
 
-        R.R1 = round(-(R2 * -(-R.V_a-(-R.V_b))) / R.V_a); // у. 4.8
+        R.I = R.I1 + R.I3;
 
-        R.I1 = round( (R.V_a - R.V_b ) / R.R1 );
-        R.I2 = R.I1; // ур. 4.13
-        R.I3 = round( (R.V_a + epsilon + epsilon_3) / R3 );
-        R.I4 = R.I3;
+        double I4_formula_test = R.I - R.I2;
+        R.I4_test = R.I4 == I4_formula_test;
 
-        R.I = round( R.I1 + R.I3 ); // 4.16
+        R.R1 = (R.I3 * R3 - epsilon_3) / R.I1;
 
-        R.U_ab = round(R.I1 * R.R1);
-        R.U_da = round(R.I2 * R2);
-        R.U_cd = round(R.I4 * R4);
+        double R1_formula_test = (epsilon - R.I2 * R2 ) / R.I1;
+        R.R1_test = (R1_formula_test == R.R1);
+
+        R.MainTest = R.I1 * R.R1 - R.I3 * R3 - R.I4 * R4 + R.I2 * R2 == -epsilon_3;
+
+        R.AllTests = R.MainTest && R.R1_test && R.I4_test;
+
+        R.U_ab = R.I1 * R.R1;
+        R.U_cd = R.I4 * R4;
+        R.U_da = R.I2 * R2;
 
         return R;
     }
